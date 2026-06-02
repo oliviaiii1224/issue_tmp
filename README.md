@@ -87,8 +87,50 @@ GitHub 支援「組織層級預設」：建立一個名為 `.github` 的特殊 r
 套用後請依自己團隊調整以下項目：
 
 - **`config.yml` 的外部連結**：目前 Discord / 後台 / 前台網址皆為佔位字串（`XXXXXX`），請換成實際網址，或刪除不需要的項目。
-- **標籤（labels）**：模板中指定的標籤（如 `錯誤回報`、`功能新增`…）需先在 repo 的 **Settings → Labels** 建立，否則套用時 GitHub 會略過。
+- **標籤（labels）**：模板中指定的標籤需先在 repo 建立，否則套用時 GitHub 會略過。詳見下方 [🏷️ 建立標籤（Labels）](#️-建立標籤labels)。
 - **PR 模板區塊**：`PULL_REQUEST_TEMPLATE.md` 含「變更內容 / 注意事項 / 影響範圍」等勾選清單，可依專案流程增刪。
+
+---
+
+## 🏷️ 建立標籤（Labels）
+
+各 Issue 模板會在送出時自動帶上對應標籤（見上方一覽表的「自動標籤」欄）。**但 GitHub 只會套用 repo 中「已存在」的標籤**——若標籤尚未建立，開 issue 時該標籤會被直接略過、不會自動建立。因此套用模板後，請先在 repo 建好以下標籤：
+
+| 標籤名稱 | 用於模板 |
+| --- | --- |
+| `錯誤回報` | 🐛 Bug Report |
+| `功能新增` | ✨ Feature Add |
+| `功能修改` | ✨ Feature Change |
+| `任務追蹤` | 🛠️ Task |
+| `樣式調整` | 🎨 Feature (UI) |
+| `技術調研` | 🔍 Spike |
+| `文件需求/修正` | 📚 Documentation |
+| `提問` | ❓ Support / Question |
+| `incident` | 🚨 Incident |
+| `production` | 🚨 Incident |
+
+### 方式一：手動建立
+
+到 repo 的 **Settings → Labels → New label**，依上表逐一新增。
+
+### 方式二：用 `gh` CLI 一次建好（推薦）
+
+安裝並登入 [GitHub CLI](https://cli.github.com/) 後，在 repo 目錄執行（`--force` 可讓重複執行時更新既有標籤而不報錯）：
+
+```bash
+gh label create "錯誤回報"      --color d73a4a --description "Bug / 錯誤回報" --force
+gh label create "功能新增"      --color 0e8a16 --description "Feature Add / 功能新增" --force
+gh label create "功能修改"      --color 1d76db --description "Feature Change / 功能修改" --force
+gh label create "任務追蹤"      --color fbca04 --description "Task / 任務追蹤" --force
+gh label create "樣式調整"      --color c5def5 --description "UI / 版型樣式調整" --force
+gh label create "技術調研"      --color 5319e7 --description "Spike / 研究試作" --force
+gh label create "文件需求/修正" --color 0075ca --description "Documentation / 文件" --force
+gh label create "提問"          --color cc317c --description "Support / Question" --force
+gh label create "incident"      --color b60205 --description "線上事故" --force
+gh label create "production"    --color e99695 --description "Production 環境" --force
+```
+
+> 顏色（`--color`）為十六進位碼，可自由替換。在 PowerShell 中同樣可直接執行上述指令（一行一條）。
 
 ---
 
