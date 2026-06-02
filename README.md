@@ -38,7 +38,7 @@
 | 🔍 Spike | 技術/需求不確定時的探索、PoC、估工前研究 | `[Spike]` | `技術調研` |
 | 📚 Documentation | 新增、補齊或修正文件（README / Spec / API Doc / SOP） | `[Docs]` | `文件需求/修正` |
 | ❓ Support / Question | 非 bug/需求的提問、卡關求救、使用支援 | `[Question]` | `提問` |
-| 🚨 Incident | 追蹤線上事故、重大異常或服務退化 | `[Incident][P1][XXX-1234]` | `incident`、`production` |
+| 🚨 Incident | 追蹤線上事故、重大異常或服務退化 | `[Incident][P1][XXX-1234]` | `線上事故` |
 
 > 已透過 `config.yml` 設定 `blank_issues_enabled: false`，**禁止建立空白 issue**，使用者必須從上述模板中選擇。
 
@@ -106,8 +106,7 @@ GitHub 支援「組織層級預設」：建立一個名為 `.github` 的特殊 r
 | `技術調研` | 🔍 Spike |
 | `文件需求/修正` | 📚 Documentation |
 | `提問` | ❓ Support / Question |
-| `incident` | 🚨 Incident |
-| `production` | 🚨 Incident |
+| `線上事故` | 🚨 Incident |
 
 ### 方式一：手動建立
 
@@ -126,8 +125,7 @@ gh label create "樣式調整"      --color c5def5 --description "UI / 版型樣
 gh label create "技術調研"      --color 5319e7 --description "Spike / 研究試作" --force
 gh label create "文件需求/修正" --color 0075ca --description "Documentation / 文件" --force
 gh label create "提問"          --color cc317c --description "Support / Question" --force
-gh label create "incident"      --color b60205 --description "線上事故" --force
-gh label create "production"    --color e99695 --description "Production 環境" --force
+gh label create "線上事故"      --color b60205 --description "Incident / 線上事故" --force
 ```
 
 > 顏色（`--color`）為十六進位碼，可自由替換。在 PowerShell 中同樣可直接執行上述指令（一行一條）。
